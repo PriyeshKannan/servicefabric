@@ -6,7 +6,7 @@
 
 - name: add servicefabric repository
   apt_repository: 
-    repo: deb [arch=amd64] http://apt-mo.trafficmanager.net/repos/servicefabric/ xenial main 
+    repo: deb [arch=amd64] http://apt-mo.trafficmanager.net/repos/servicefabric/ trusty main 
     state: present
     filename: 'service-fabric'
 
