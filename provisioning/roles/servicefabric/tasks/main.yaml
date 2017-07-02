@@ -1,0 +1,26 @@
+---
+- name: add keys for servicefabric repository
+  apt_key: 
+    keyserver: apt-mo.trafficmanager.net
+    id:  417A0893
+
+- name: add servicefabric repository
+  apt_repository: 
+    repo: deb [arch=amd64] http://apt-mo.trafficmanager.net/repos/servicefabric/ xenial main 
+    state: present
+    filename: 'service-fabric'
+
+- name: accept servicefabric eula
+  shell: echo "servicefabric servicefabric/accepted-eula-v1 select true" | debconf-set-selections
+
+
+- name: accept servicefabric sdk eula
+  shell: echo "servicefabricsdkcommon servicefabricsdkcommon/accepted-eula-v1 select true" | debconf-set-selections
+      
+- name: install servicefabric
+  apt: state=present name=servicefabricsdkcommon
+
+- name: configure servicefabric sdk
+  command: /opt/microsoft/sdk/servicefabric/common/sdkcommonsetup.sh
+
+

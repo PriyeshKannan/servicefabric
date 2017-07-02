@@ -1,0 +1,21 @@
+---
+- name: configure timezone
+  command: timedatectl set-timezone America/New_York
+
+- name: disable timesyncd
+  command: timedatectl set-ntp off
+
+- name: install required packages
+  apt: state=present name={{ item }}
+  with_items:
+    - unzip
+    - dnsmasq
+    - ntp
+
+- name: configure dnsmasq
+  copy: src=10-consul.dnsmasq.conf dest=/etc/dnsmasq.d/10-consul
+  notify:
+  - restart dnsmasq
+
+
+
