@@ -14,5 +14,3 @@
     state: present
     filename: 'docker'
 
-- name: install docker
-  apt: state=present name=docker-engine

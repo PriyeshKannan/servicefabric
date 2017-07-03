@@ -10,5 +10,3 @@
     state: present
     filename: 'dot-net'
 
-- name: install dotnet
-  apt: state=present name=dotnet-dev-1.0.4 

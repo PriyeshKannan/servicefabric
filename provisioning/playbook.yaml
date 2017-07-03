@@ -11,11 +11,13 @@
   become: yes
   roles:
   - common
+   
+- hosts: orchestrated
+  become: yes
+  roles:
   - dotnet
   - docker
   - servicefabric
- 
-   
 
  
  
